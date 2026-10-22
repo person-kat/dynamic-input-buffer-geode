@@ -1,39 +1,19 @@
-# Predictive Input Buffer (recreación para Geode)
+# Predictive Input Buffer (Geode Recreation)
 
-Recreación del mod **Predictive Input Buffer** a partir del log de consola de la v4.7.
-No es el código original: es una reimplementación del comportamiento observado.
+Recreation of the **Predictive Input Buffer** mod based on the v4.7 console log.
+This is not the original code: it is a reimplementation of the observed behavior.
 
-## Comportamiento
+## Behavior
 
-- Los inputs (press / release) se encolan y se aplican **N ticks después** (1 tick = 1/240 s).
-- **F6** cicla las etapas dentro del nivel:
+- Inputs (press / release) are queued and applied **N ticks later** (1 tick = 1/240 s).
+- **F6** cycles through the stages within a level:
 
-| Etapa | Ticks (todo) | Ticks (wave) |
-|-------|--------------|--------------|
-| 1     | 2            | 2            |
-| 2     | 4            | 4            |
-| 3     | 8            | 8            |
-| 4     | 16           | 8            |
-| OFF   | input crudo  | input crudo  |
+| Stage | Ticks (all) | Ticks (wave) |
+|-------|-------------|--------------|
+| 1     | 2           | 2            |
+| 2     | 4           | 4            |
+| 3     | 8           | 8            |
+| 4     | 16          | 8            |
+| OFF   | raw input   | raw input    |
 
-## Cómo obtener el archivo `.geode` (la forma fácil, sin instalar nada)
-
-1. Crea un repositorio nuevo en GitHub y sube todo el contenido de esta carpeta.
-2. Ve a la pestaña **Actions** → se ejecuta *Build Geode Mod* (o lánzalo con *Run workflow*).
-3. Al terminar (unos minutos), descarga el artefacto **Build Output**: dentro está `tuusuario.predictive-input-buffer.geode`.
-4. Copia ese archivo a `...\Geometry Dash\geode\mods\` y abre el juego.
-
-## Compilar en local (Windows)
-
-1. Instala la CLI de Geode: https://docs.geode-sdk.org/getting-started/geode-cli
-2. `geode sdk install` y `geode sdk install-binaries`
-3. Dentro de esta carpeta: `geode build`
-4. El `.geode` aparece en `build/`.
-
-## Antes de publicar
-
-- Cambia `tuusuario` / `TuUsuario` en `mod.json` por tu usuario.
-- El código usa `GJBaseGameLayer::handleButton` y `processCommands` para GD **2.2081**.
-  Si una versión nueva de Geode cambia las firmas (por ejemplo `dispatchKeyboardMSG`), ajústalas.
-- Código **sin probar en el juego**: puede requerir retoques de sincronización de ticks.
-- Si vas a compartirlo, respeta la licencia/permiso del autor del mod original.
+ALL CREDITS FOR MAKING THE MOD TO jolanwxf
